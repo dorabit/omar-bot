@@ -1,109 +1,56 @@
-# _build.js
-build.start.varLoaded: "تم تحميل متغير البيئة بنجاح."
-build.start.exit: "التنظيف والخروج..."
-build.start.serverStarted: "تمت تهيئة الخادم في البوابة {port} بكلمة سر: {serverAdminPassword}"
-build.start.logging: "مسجل حاليا..."
-build.start.logged: "تم تسجيل الدخول بنجاح - {botID}."
-build.start.plugin.loading: "تحضير plugins"
+{
+  "app.starting": "✅ تم تشغيل البوت بنجاح.",
+  "app.stopped": "⛔ توقف البوت، اضغط Ctrl + C للخروج.",
+  "app.developer": "👨‍💻 المطور: حمودي سان 🇸🇩",
+  "update.checking": "🔍 جاري البحث عن تحديثات...",
+  "update.none": "✅ لا توجد تحديثات متاحة.",
+  "update.available": "📢 يوجد إصدار جديد متاح: {version}\n📌 الإصدار الحالي: {current}",
+  "error.generic": "❌ حدث خطأ غير متوقع.",
+  "env.glitch.detected": "🛠 تم الكشف عن بيئة Glitch، جاري إنشاء watch.json...",
+  "env.github.warn": "⚠️ تشغيل البوت على GitHub غير مُستحسن.",
+  "node.required": "🚫 يتطلب البوت Node.js الإصدار 16 أو أعلى. يرجى التحديث.",
+  "replit.installing": "📦 جاري تثبيت Node.js v16 لـ Repl.it...",
+  "replit.failed": "❌ فشل تثبيت Node.js v16.",
 
-build.startxConsole.terminalNotSupported: "Terminal {term} غير مدعوم."
-build.startxConsole.platformNotSupported: "لايوجد دعم لتشغيل xConsole على المنصة {platform}."
+  "help.title": "الأوامر",
+  "help.list": "{list}\n\n⇒ المجموع: {total} أمر\n⇒ استخدم {syntax} [أمر] لمزيد من المعلومات عن الأمر.",
+  "help.commandNotExists": "الأمر {command} غير موجود.",
+  "help.commandDetails": "⇒ الاسم: {name}\n⇒ الأسماء المستعارة: {aliases}\n⇒ الإصدار: {version}\n⇒ الوصف: {description}\n⇒ طريقة الاستخدام: {usage}\n⇒ الصلاحيات: {permissions}\n⇒ الفئة: {category}\n⇒ وقت الانتظار: {cooldown}\n⇒ المطور: {credits}",
+  "perm.0": "عضو",
+  "perm.1": "مشرف المجموعة",
+  "perm.2": "مشرف البوت",
 
-build.refreshState: "تحديث ملفات تعريف الارتباط..."
-build.refreshMqtt: "تحديث MQTT..."
+  "weather.name": "الطقس",
+  "weather.missingInput": "❗ الرجاء إدخال موقع",
+  "weather.notFound": "⚠️ الموقع غير موجود",
+  "weather.results": "🌤 الطقس في {name}:\n🌡 درجة الحرارة: {temperture}°C\n🗓 التاريخ: {day}, {date}\n🕒 وقت المراقبة: {observationtime}\n📍 نقطة المراقبة: {observationpoint}\n☁ حالة السماء: {skytext}\n💨 سرعة الرياح: {windspeed}\n💧 الرطوبة: {humidity}",
+  "weather.error": "حدث خطأ أثناء جلب بيانات الطقس.",
 
-# checkAppstate.js
-modules.checkAppstate.parsingError: "file appstate ليس صالحا / لايمكن فك تشفيرها"
-modules.checkAppstate.noProtection: "appstate الحماية معطلة"
-modules.checkAppstate.error.notSupported: "التشفير غير مدعوم لهذه البيئة"
-modules.checkAppstate.error.noAppstate: "لم يتم العثور على file appstate"
-modules.checkAppstate.foundAppstate: "تم العثور على  file appstate"
-modules.checkAppstate.error.noKey: "لم يتم العثور على رمز حماية appstate"
-modules.checkAppstate.decrypting: "فك file appstate..."
-modules.checkAppstate.encrypting: "تشفير file appstate..."
-modules.checkAppstate.error.invalid: "file appstate غير صالح, يرجى التحقق مرة أخرى"
+  "id.title": "معلومات الحساب",
+  "id.reply": "🆔 معرفك: {id}\n👤 الاسم: {name}",
 
-# loader.js
-modules.loader.plugins.commands.error.nameExists: "اسم الامر {name} موجود مسبقا!"
-modules.loader.plugins.commands.error.noAliases: "لا توجد أسماء مستعارة متاحة!"
+  "uid.title": "معرف فيسبوك",
+  "uid.reply": "🔗 UID: {uid}",
 
-modules.loader.plugins.default.error.onCallNotExists: "وظيفة التنفيذ مفقودة!"
-modules.loader.plugins.default.error.onCallNotFunction: "ليس وظيفة oncall!"
-modules.loader.plugins.default.error.noExport: "البيانات الصالحة مفقودة!"
-modules.loader.plugins.default.error.onLoadFailed: "خطأ في تنفيذ الوظيفة onLoad: {error}"
+  "profile.title": "الملف الشخصي",
+  "profile.reply": "👤 الاسم: {name}\n🆔 المعرف: {id}\n📆 الإنشاء: {created}",
 
-modules.loader.plugins.commands.error.failed: "تعذر تحميل الامر {fileName}, خطأ: {error}"
-modules.loader.plugins.onMessage.error.failed: "تعذر تحميل المعالج {fileName}, خطأ: {error}"
-modules.loader.plugins.events.error.failed: "تعذر تحميل الحدث {fileName}, خطأ: {error}"
-modules.loader.plugins.customs.error.failed: "غير قادر على تحميل مخصص {fileName}, خطأ: {error}"
+  "bank.balance": "💳 رصيدك: {balance}",
+  "points.show": "⭐ نقاطك: {points}",
+  "level.show": "📈 مستواك: {level} (XP: {xp})",
 
-modules.loader.plugins.commands.loaded: "محمل {commands}/{total} يأمر"
-modules.loader.plugins.onMessage.loaded: "محمل {onMessage}/{total} معالج الرسائل"
-modules.loader.plugins.events.loaded: "محمل {events}/{total} حدث"
-modules.loader.plugins.customs.loaded: "انطلقت {customs}/{total} العادة"
+  "fun.kiss": "💋 {from} بعث قبلة لـ {to}",
+  "fun.marry.ask": "💍 {from} يطلب الزواج من {to}. اكتب نعم/لا.",
+  "fun.marry.ok": "💞 مبروك! تم الزواج بين {a} و {b}!",
+  "fun.marry.no": "🙈 تم الرفض.",
+  
+  "search.pinterest.noInput": "اكتب كلمة للبحث في بينتريست.",
+  "search.pinterest.result": "📌 نتائج لـ {query}:",
+  "search.anime.result": "🎌 نتائج أنمي لـ {query}:",
 
-# handlers
-handlers.commands.nsfwNotAllowed: "لاتسمح هذه المجموعة بأوامر nsfw."
-handlers.commands.noPermission: "انت غير مصرح لك لاستخدام."
-handlers.default.error: "حدث خطأ: {error}"
-handlers.listen.accountError: "حدث خطأ في حسابك ، يرجى المحاولة مرة أخرى لاحقًا."
-
-# resend
-plugins.resend.noMessage: "• {author} ازلت للتو رسالة معينة."
-plugins.resend.unsendNoMessageButAttach: "• {author} لم يرسل {attachmentsCount} المرفقات:"
-plugins.resend.unsendMessageAndAttach: "• {author} قمت بالغاء ارسال رسالة مع {attachmentsCount} المرفقات:\n\n{message}"
-plugins.resend.unsendMessage: "• {author} أزلت للتو رسالة:\n\n{message}"
-
-# Database
-database.mongo_url_not_found: "متغير البيئة غير موجود MONGO_URL"
-database.init: "تهيئة قاعدة البيانات {database}..."
-database.init.done: "متصل بقاعدة البيانات {database}."
-database.thread.get.success: "{threadID} - مجموعة جديدة"
-database.user.get.success: "{userID} - مستخدم جديد"
-database.error: "حدث خطأ أثناء الوصول إلى قاعدة البيانات: {error}"
-database.updating: "تحديث قاعدة البيانات {database}..."
-
-# events
-plugins.events.change_thread_image.userChangedThreadImage: "\"{author}\" غيرت صورة المجموعة."
-plugins.events.change_thread_image.reversed: "\nغير مسموح بتغيير صورة المجموعة ، لذلك قمت بتغييرها مرة أخرى إلى الصورة القديمة."
-plugins.events.change_thread_image.reversed_t: "[ ANTI ALERT ]\nغير مسموح بتغيير صورة المجموعة لذلك تم اعادتها!" 
-plugins.events.change_thread_image.setNewImage: "\nغير مسموح بتغيير صور المجموعة ولكن نظرًا لعدم وجود صور قديمة ، سيتم استخدام صور جديدة."
-plugins.events.change_thread_image.unsupported: "تنسيق الصورة غير مدعوم للموضوع {threadId} ، يتم قبول URL فقط."
-
-plugins.events.subscribe.addSelf: "Bot تمت إضافته إلى المجموعة \"{threadName}\" ({threadId}) من قبل شخص يستخدم \"{authorName}\" ({authorId})."
-plugins.events.subscribe.connected: "الاتصال ناجح!\nغير مستخدم {PREFIX}تساعد في رؤية قائمة الاوامر."
-plugins.events.subscribe.error.createMonitor: "تعذر إنشاء مجموعة مشرفين لهذه المجموعة."
-plugins.events.subscribe.createdMonitor: "المجموعة {threadId} سيتم رصد العمل في هذه المجموعة"
-# plugins.events.subscribe.addMembers: "\"{authorName}\" ({authorId}) اضاف {membersLength} عضو:\n{members}"
-plugins.events.subscribe.welcome: "اهلا {members} الى {threadName}!\nانت {newCount} عضو في هذه المجموعة."
-plugins.events.subscribe.warns: "{username} تم طرده بسبب تجاوز الحد الأقصى لعدد التحذيرات."
-
-plugins.events.unsubscribe.bot.left: "Bot غادر \"{threadName}\" ({threadId})."
-plugins.events.unsubscribe.bot.kicked: "Bot تم طرده من \"{threadName}\" ({threadId}) بواسطة \"{authorName}\" ({authorId})."
-# plugins.events.unsubscribe.left: "\"{leftName}\" ({leftId}) غادر المجموعة."
-# plugins.events.unsubscribe.kicked: "\"{leftName}\" ({leftId}) تم طرده من قبل\"{authorName}\" ({authorId})."
-plugins.events.unsubscribe.left: "{leftName} غادر."
-plugins.events.unsubscribe.kicked: "{leftName} تم طرده."
-plugins.events.unsubscribe.antiOut.error: "[ ANTIOUT ] لا يمكن إضافة عضو مرة أخرى إلى المجموعة!"
-plugins.events.unsubscribe.antiOut.success: "[ ANTIOUT ] تمت إضافة العضو مرة أخرى إلى المجموعة!"
-
-
-plugins.events.thread-call.startedCall: "\"{authorName}\" ({authorId}) بدأ مكالمة."
-plugins.events.thread-call.startedVideoCall: "\"{authorName}\" ({authorId}) فتح مكالمة فيديو جماعية."
-plugins.events.thread-call.endedCall: "انتهت المكالمة ، وقت الاتصال: {callDuration}."
-plugins.events.thread-call.endedVideoCall: "انتهت مكالمة الفيديو ، ووقت المكالمة: {callDuration}."
-plugins.events.thread-call.joinedCall: "\"{authorName}\" ({authorId}) انضم إلى المكالمة."
-plugins.events.thread-call.joinedVideoCall: "\"{authorName}\" ({authorId}) انضم إلى مكالمة فيديو."
-
-plugins.events.thread-update.name.changed: "\"{authorName}\" ({authorId}) غيرت اسم المجموعة إلى \"{newName}\"."
-plugins.events.thread-update.name.reversed: "\nغير مسموح بتغيير اسم المجموعة ، لذلك تم تغيير الاسم القديم."
-plugins.events.thread-update.name.reversed_t: "[ ANTI ALERT ] تغيير اسم المجموعة غير مسموح به لذلك تم اعادته!"
-plugins.events.thread-update.color.changed: "\"{authorName}\" ({authorId}) تغير لون خط المجموعة من {oldColor} الى {newColor}."
-plugins.events.thread-update.emoji.changed: "\"{authorName}\" ({authorId}) تغير الرمز التعبيري للمجموعة من {oldEmoji} الى {newEmoji}."
-plugins.events.thread-update.approvalMode.changed: "\"{authorName}\" ({authorId}) تم تغيير وضع الإشراف على الأعضاء إلى {newApprovalMode}."
-plugins.events.thread-update.admins.added: "\"{authorName}\" ({authorId}) اضاف \"{targetName}\" ({targetId}) الى مدير مجموعة."
-plugins.events.thread-update.admins.removed:  "\"{authorName}\" ({authorId}) حذف \"{targetName}\" ({targetId}) من مدراء المجموعة."
-plugin.events.user-nickname.changedBy: "\"{authorName}\" ({authorId}) غير لقبه \"{targetName}\" ({targetId}) الى \"{newNickname}\"."
-plugin.events.user-nickname.changedBySelf: "\"{authorName}\" ({authorId}) غير لقبه الى \"{newNickname}\"."
-plugin.events.user-nickname.reversed: "\nلم يُسمح بتغيير الاسم المستعار ، لذلك قمت بتغييره مرة أخرى إلى الاسم المستعار القديم."
-plugin.events.user-nickname.reversed_t: "[ ANTI ALERT ] تغيير اللقب غير مسموح به لذلك تم اعادته!"
+  "common.cooldown": "⏳ انتظر {sec}s قبل إعادة الاستخدام.",
+  "common.missingPerm": "🚫 لا تملك صلاحية لهذا الأمر.",
+  "common.invalid": "❌ مدخلات غير صحيحة.",
+  "common.done": "✅ تم.",
+  "common.loading": "⏳ جاري التنفيذ..."
+}
