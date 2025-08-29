@@ -1,5 +1,5 @@
 {
-  "name": "xaviabot",
+  "name": "dora",
   "version": "2.4.2",
   "description": "A Facebook Messenger Bot",
   "main": "index.js",
@@ -23,7 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/XaviaTeam/XaviaBot.git"
   },
-  "author": "RFS-ADRENO",
+  "author": "حمودي سان 🇸🇩",
   "license": "MIT",
   "dependencies": {
     "@distube/ytdl-core": "^4.14.4",
