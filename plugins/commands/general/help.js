@@ -1,13 +1,13 @@
 const config = {
     name: "help",
     _name: {
-        "ar_SY": "الاوامر"
+        "ar_SY": "الأوامر"
     },
     aliases: ["cmds", "commands"],
     version: "1.0.3",
-    description: "Show all commands or command details",
-    usage: "[command] (optional)",
-    credits: "XaviaTeam"
+    description: "عرض جميع الأوامر أو تفاصيل أمر معين",
+    usage: "[الأمر] (اختياري)",
+    credits: "حمودي سان 🇸🇩"
 }
 
 const langData = {
@@ -48,21 +48,22 @@ const langData = {
         "2": "Quản trị bot"
     },
     "ar_SY": {
-        "help.list": "{list}\n\n⇒ المجموع: {total} الاوامر\n⇒ يستخدم {syntax} [امر] لمزيد من المعلومات حول الأمر.",
-        "help.commandNotExists": "امر {command} غير موجود.",
+        "help.list": "{list}\n\n⇒ المجموع: {total} أمر\n⇒ استخدم {syntax} [أمر] لمزيد من المعلومات عن الأمر.",
+        "help.commandNotExists": "الأمر {command} غير موجود.",
         "help.commandDetails": `
-            ⇒ اسم: {name}
-            ⇒ اسم مستعار: {aliases}
-            ⇒ وصف: {description}
-            ⇒ استعمال: {usage}
+            ⇒ الاسم: {name}
+            ⇒ الأسماء المستعارة: {aliases}
+            ⇒ الإصدار: {version}
+            ⇒ الوصف: {description}
+            ⇒ طريقة الاستخدام: {usage}
             ⇒ الصلاحيات: {permissions}
-            ⇒ فئة: {category}
+            ⇒ الفئة: {category}
             ⇒ وقت الانتظار: {cooldown}
-            ⇒ الاعتمادات: {credits}
+            ⇒ المطور: {credits}
         `,
         "0": "عضو",
-        "1": "إدارة المجموعة",
-        "2": "ادارة البوت"
+        "1": "مشرف المجموعة",
+        "2": "مشرف البوت"
     }
 }
 
@@ -73,7 +74,7 @@ function getCommandName(commandName) {
         if (value.includes(commandName)) return key;
     }
 
-    return null
+    return null;
 }
 
 async function onCall({ message, args, getLang, userPermissions, prefix }) {
@@ -82,7 +83,7 @@ async function onCall({ message, args, getLang, userPermissions, prefix }) {
 
     if (!commandName) {
         let commands = {};
-        const language = data?.thread?.data?.language || global.config.LANGUAGE || 'en_US';
+        const language = data?.thread?.data?.language || global.config.LANGUAGE || 'ar_SY';
         for (const [key, value] of commandsConfig.entries()) {
             if (!!value.isHidden) continue;
             if (!!value.isAbsolute ? !global.config?.ABSOLUTES.some(e => e == message.senderID) : false) continue;
@@ -99,7 +100,7 @@ async function onCall({ message, args, getLang, userPermissions, prefix }) {
         message.reply(getLang("help.list", {
             total: Object.values(commands).map(e => e.length).reduce((a, b) => a + b, 0),
             list,
-            syntax: message.args[0].toLowerCase()
+            syntax: prefix
         }));
     } else {
         const command = commandsConfig.get(getCommandName(commandName, commandsConfig));
@@ -120,7 +121,7 @@ async function onCall({ message, args, getLang, userPermissions, prefix }) {
             permissions: command.permissions.map(p => getLang(String(p))).join(", "),
             category: command.category,
             cooldown: command.cooldown || 3,
-            credits: command.credits || ""
+            credits: command.credits || "حمودي سان 🇸🇩"
         }).replace(/^ +/gm, ''));
     }
 }
