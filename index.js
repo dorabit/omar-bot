@@ -15,7 +15,7 @@ import {
 
 console.clear();
 
-// Install newer node version on some old Repls
+// تثبيت إصدار Node أحدث إذا كان البوت يعمل على Replit قديم
 function upNodeReplit() {
     return new Promise((resolve) => {
         execSync(
@@ -29,18 +29,16 @@ function upNodeReplit() {
     if (process.version.slice(1).split(".")[0] < 16) {
         if (isReplit) {
             try {
-                logger.warn("Installing Node.js v16 for Repl.it...");
+                logger.warn("📦 جاري تثبيت Node.js v16 لـ Repl.it...");
                 await upNodeReplit();
                 if (process.version.slice(1).split(".")[0] < 16)
-                    throw new Error("Failed to install Node.js v16.");
+                    throw new Error("❌ فشل تثبيت Node.js v16.");
             } catch (err) {
                 logger.error(err);
                 process.exit(0);
             }
         }
-        logger.error(
-            "Xavia requires Node 16 or higher. Please update your version of Node."
-        );
+        logger.error("🚫 يتطلب البوت Node.js الإصدار 16 أو أعلى. يرجى التحديث.");
         process.exit(0);
     }
 
@@ -56,7 +54,7 @@ function upNodeReplit() {
             !existsSync(process.cwd() + "/watch.json") ||
             !statSync(process.cwd() + "/watch.json").isFile()
         ) {
-            logger.warn("Glitch environment detected. Creating watch.json...");
+            logger.warn("🛠 تم الكشف عن بيئة Glitch، جاري إنشاء ملف watch.json...");
             writeFileSync(
                 process.cwd() + "/watch.json",
                 JSON.stringify(WATCH_FILE, null, 2)
@@ -66,15 +64,13 @@ function upNodeReplit() {
     }
 
     if (isGitHub) {
-        logger.warn("Running on GitHub is not recommended.");
+        logger.warn("⚠️ تشغيل البوت على GitHub غير مُستحسن.");
     }
 })();
 
-// End
-
-// CHECK UPDATE
+// فحص التحديثات
 async function checkUpdate() {
-    logger.custom("Checking for updates...", "UPDATE");
+    logger.custom("🔍 جاري البحث عن تحديثات...", "UPDATE");
     try {
         const res = await axios.get(
             "https://raw.githubusercontent.com/XaviaTeam/XaviaBot/main/package.json"
@@ -85,17 +81,17 @@ async function checkUpdate() {
             readFileSync("./package.json")
         ).version;
         if (semver.lt(currentVersion, version)) {
-            logger.warn(`New version available: ${version}`);
-            logger.warn(`Current version: ${currentVersion}`);
+            logger.warn(`📢 يوجد إصدار جديد متاح: ${version}`);
+            logger.warn(`📌 الإصدار الحالي: ${currentVersion}`);
         } else {
-            logger.custom("No updates available.", "UPDATE");
+            logger.custom("✅ لا توجد تحديثات متاحة.", "UPDATE");
         }
     } catch (err) {
-        logger.error("Failed to check for updates.");
+        logger.error("❌ فشل التحقق من التحديثات.");
     }
 }
 
-// Child handler
+// إدارة إعادة التشغيل
 const _1_MINUTE = 60000;
 let restartCount = 0;
 
@@ -121,13 +117,14 @@ async function main() {
         handleRestartCount();
         if (code !== 0 && restartCount < 5) {
             console.log();
-            logger.error(`An error occurred with exit code ${code}`);
-            logger.warn("Restarting...");
+            logger.error(`💥 حدث خطأ برمز الخروج ${code}`);
+            logger.warn("♻️ جاري إعادة التشغيل...");
             await new Promise((resolve) => setTimeout(resolve, 2000));
             main();
         } else {
             console.log();
-            logger.error("XaviaBot has stopped, press Ctrl + C to exit.");
+            logger.error("⛔ توقف البوت، اضغط Ctrl + C للخروج.");
+            logger.custom("👨‍💻 المطور: حمودي سان 🇸🇩", "INFO");
         }
     });
 }
