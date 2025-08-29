@@ -23,6 +23,9 @@ import { Assets } from "./handlers/assets.js";
 
 import crypto from "crypto";
 
+// دعم اللغة العربية
+process.env.BOT_LANG = process.env.BOT_LANG || "ar";
+
 process.stdout.write(String.fromCharCode(27) + "]0;" + "Xavia" + String.fromCharCode(7));
 
 process.on("unhandledRejection", (reason, p) => {
@@ -195,7 +198,6 @@ async function loginState() {
     // Enhanced Nexus-fCA options for better safety and performance
     const nexusOptions = {
         ...options,
-        // Nexus-fCA specific safety features
         enableSafeHeaders: true,
         enableHumanBehavior: true,
         enableAntiDetection: true,
@@ -207,6 +209,10 @@ async function loginState() {
     };
 
     return await login({ appState }, nexusOptions);
+}
+
+function getRandomPassword(length) {
+    return crypto.randomBytes(length).toString("hex").slice(0, length);
 }
 
 start();
